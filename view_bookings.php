@@ -44,3 +44,6 @@ if ($result->num_rows > 0) {
     echo "No bookings found.";
 }
 ?>
+<a href="http://localhost:8080/obst/bus_details.php">Bus Details</a>
+
+<a href="http://localhost:8080/obst/search.php">Available Buses</a>

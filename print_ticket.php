@@ -20,7 +20,7 @@ $booking = $stmt->get_result()->fetch_assoc();
 
 // Fetch payment details
 $sql2 = "SELECT card_number, card_holder, amount, payment_date 
-         FROM payments WHERE id = ?";
+         FROM payments WHERE booking_id = ?";
 $stmt2 = $conn->prepare($sql2);
 $stmt2->bind_param("i", $booking_id);
 $stmt2->execute();
@@ -34,7 +34,7 @@ if (!$booking) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ticket #<?php echo $booking['id']; ?></title>
+    <title>Ticket #<?php echo $booking['booking_id']; ?></title>
     <style>
         body { font-family: Arial, sans-serif; }
         .ticket {
@@ -59,7 +59,7 @@ if (!$booking) {
 <div class="ticket">
     <h2>Bus Ticket</h2>
     <table>
-        <tr><td><b>Booking ID:</b></td><td><?php echo $booking['id']; ?></td></tr>
+        <tr><td><b>Booking ID:</b></td><td><?php echo $booking['booking_id']; ?></td></tr>
         <tr><td><b>Passenger Name:</b></td><td><?php echo $booking['passenger_name']; ?></td></tr>
         <tr><td><b>Seats:</b></td><td><?php echo $booking['seats']; ?></td></tr>
         <tr><td><b>Bus Name:</b></td><td><?php echo $booking['bus_name']; ?></td></tr>
@@ -81,6 +81,8 @@ if (!$booking) {
         <p><i>No payment details found.</i></p>
     <?php } ?>
 </div>
+
+
 
 </body>
 </html>
