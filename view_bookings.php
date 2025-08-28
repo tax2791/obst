@@ -1,7 +1,7 @@
 <?php
 include "db.php";
 
-$sql = "SELECT b.id AS booking_id, b.passenger_name, b.seats, b.booking_time,b.travel_date, 
+$sql = "SELECT b.id AS booking_id, b.passenger_name, b.seats, b.booking_time, b.travel_date, 
                buses.bus_name, buses.source, buses.destination
         FROM bookings b
         JOIN buses ON b.bus_id = buses.id
@@ -22,6 +22,7 @@ if ($result->num_rows > 0) {
             <th>To</th>
             <th>Travel Date</th>
             <th>Booking Time</th>
+            <th>Action</th>
           </tr>";
 
     while ($row = $result->fetch_assoc()) {
@@ -34,6 +35,7 @@ if ($result->num_rows > 0) {
                 <td>{$row['destination']}</td>
                 <td>{$row['travel_date']}</td>
                 <td>{$row['booking_time']}</td>
+                <td><a href='print_ticket.php?id={$row['booking_id']}' target='_blank'>Print</a></td>
               </tr>";
     }
 
