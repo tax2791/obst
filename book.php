@@ -24,6 +24,7 @@ if (isset($_POST['preview'])) {
 }
 
 // STEP 2: PAYMENT PROCESS
+//dummy payment process request
 if (isset($_POST['pay'])) {
     $booking = $_SESSION['booking'];
     $card_number = $_POST['card_number'];
